@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Angular 2 QuickStart</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/justindujardin/ng2-material/410d0dc/dist/ng2-material.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/justindujardin/ng2-material/410d0dc/dist/font.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="lib/system.js"></script>
+    <script src="config.js"></script>
+
+    <script>
+        System.import('app/boot')
+            .then(null, console.error.bind(console));
+    </script>
+
+</head>
+
+<body>
+    <my-app>Loading...</my-app>
+</body>
+
+</html>
