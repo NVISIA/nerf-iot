@@ -4,11 +4,12 @@ This is a [Node.js](https://nodejs.org/en/) + [Angular 2.0](https://angular.io/)
 The primary mechanism of communication between the server and clients is [socket.io](http://socket.io/).
 
 ## Setup
-Install Node.js, jspm, and [Mocha](https://mochajs.org/) via Homebrew and [npm](https://www.npmjs.com/). [Homebrew](http://brew.sh/) is a package manager for OS X. Substitute your favorite package manager on other operated systems.
+Install Node.js, jspm, [Mocha](https://mochajs.org/), and [forever](https://www.npmjs.com/package/forever) via Homebrew and [npm](https://www.npmjs.com/). [Homebrew](http://brew.sh/) is a package manager for OS X. Substitute your favorite package manager on other operated systems.
 ```
 brew install node
 npm install -g jspm
 npm install -g mocha
+npm install -g forever
 ```
 
 Install dependencies.
@@ -30,3 +31,9 @@ mocha test.js
 
 ## Client
 Navigate to http://localhost:3000.
+
+## Daemon
+Run the Node.js application forever. This must be run at each server start, either from the command line, or set up as a service.
+```
+forever start index.js
+```
