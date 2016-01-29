@@ -23,8 +23,7 @@ System.config({
     "express": "npm:express@4.13.4",
     "ng2-material": "npm:ng2-material@0.1.8",
     "reflect-metadata": "npm:reflect-metadata@0.1.3",
-    "socket.io": "npm:socket.io@1.4.4",
-    "socketio": "npm:socketio@1.0.0",
+    "socket.io": "npm:socket.io@1.4.5",
     "typescript": "npm:typescript@1.7.5",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -114,7 +113,7 @@ System.config({
     },
     "npm:asn1.js@4.3.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
       "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
@@ -162,14 +161,14 @@ System.config({
       "inherits": "npm:inherits@2.0.1"
     },
     "npm:browserify-rsa@4.0.0": {
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "constants": "github:jspm/nodelibs-constants@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "randombytes": "npm:randombytes@2.0.2"
     },
     "npm:browserify-sign@4.0.0": {
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -226,7 +225,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:create-ecdh@4.0.0": {
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "elliptic": "npm:elliptic@6.2.2"
@@ -253,7 +252,7 @@ System.config({
       "create-ecdh": "npm:create-ecdh@4.0.0",
       "create-hash": "npm:create-hash@1.1.2",
       "create-hmac": "npm:create-hmac@1.1.4",
-      "diffie-hellman": "npm:diffie-hellman@5.0.1",
+      "diffie-hellman": "npm:diffie-hellman@5.0.2",
       "inherits": "npm:inherits@2.0.1",
       "pbkdf2": "npm:pbkdf2@3.0.4",
       "public-encrypt": "npm:public-encrypt@4.0.0",
@@ -294,8 +293,8 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0"
     },
-    "npm:diffie-hellman@5.0.1": {
-      "bn.js": "npm:bn.js@4.8.1",
+    "npm:diffie-hellman@5.0.2": {
+      "bn.js": "npm:bn.js@4.9.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "miller-rabin": "npm:miller-rabin@4.0.0",
@@ -303,13 +302,13 @@ System.config({
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:elliptic@6.2.2": {
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "brorand": "npm:brorand@1.0.5",
       "hash.js": "npm:hash.js@1.0.3",
       "inherits": "npm:inherits@2.0.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:engine.io-client@1.6.7": {
+    "npm:engine.io-client@1.6.8": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "component-emitter": "npm:component-emitter@1.1.2",
       "component-inherit": "npm:component-inherit@0.0.3",
@@ -340,7 +339,7 @@ System.config({
       "has-binary": "npm:has-binary@0.1.6",
       "utf8": "npm:utf8@2.1.0"
     },
-    "npm:engine.io@1.6.7": {
+    "npm:engine.io@1.6.8": {
       "accepts": "npm:accepts@1.1.4",
       "base64id": "npm:base64id@0.1.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -455,7 +454,7 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:miller-rabin@4.0.0": {
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "brorand": "npm:brorand@1.0.5"
     },
     "npm:mime-db@1.12.0": {
@@ -543,7 +542,7 @@ System.config({
       "ipaddr.js": "npm:ipaddr.js@1.0.5"
     },
     "npm:public-encrypt@4.0.0": {
-      "bn.js": "npm:bn.js@4.8.1",
+      "bn.js": "npm:bn.js@4.9.0",
       "browserify-rsa": "npm:browserify-rsa@4.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "create-hash": "npm:create-hash@1.1.2",
@@ -639,19 +638,19 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "socket.io-parser": "npm:socket.io-parser@2.2.2"
     },
-    "npm:socket.io-client@1.4.4": {
+    "npm:socket.io-client@1.4.5": {
       "backo2": "npm:backo2@1.0.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "component-bind": "npm:component-bind@1.0.0",
       "component-emitter": "npm:component-emitter@1.2.0",
       "debug": "npm:debug@2.2.0",
-      "engine.io-client": "npm:engine.io-client@1.6.7",
+      "engine.io-client": "npm:engine.io-client@1.6.8",
       "has-binary": "npm:has-binary@0.1.7",
       "indexof": "npm:indexof@0.0.1",
       "object-component": "npm:object-component@0.0.3",
       "parseuri": "npm:parseuri@0.0.4",
-      "socket.io-parser": "npm:socket.io-parser@2.2.5",
-      "to-array": "npm:to-array@0.1.3"
+      "socket.io-parser": "npm:socket.io-parser@2.2.6",
+      "to-array": "npm:to-array@0.1.4"
     },
     "npm:socket.io-parser@2.2.2": {
       "benchmark": "npm:benchmark@1.0.0",
@@ -661,14 +660,6 @@ System.config({
       "isarray": "npm:isarray@0.0.1",
       "json3": "npm:json3@3.2.6"
     },
-    "npm:socket.io-parser@2.2.5": {
-      "benchmark": "npm:benchmark@1.0.0",
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
-      "component-emitter": "npm:component-emitter@1.1.2",
-      "debug": "npm:debug@2.2.0",
-      "isarray": "npm:isarray@0.0.1",
-      "json3": "npm:json3@3.3.2"
-    },
     "npm:socket.io-parser@2.2.6": {
       "benchmark": "npm:benchmark@1.0.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -677,23 +668,18 @@ System.config({
       "isarray": "npm:isarray@0.0.1",
       "json3": "npm:json3@3.3.2"
     },
-    "npm:socket.io@1.4.4": {
+    "npm:socket.io@1.4.5": {
       "debug": "npm:debug@2.2.0",
-      "engine.io": "npm:engine.io@1.6.7",
+      "engine.io": "npm:engine.io@1.6.8",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "has-binary": "npm:has-binary@0.1.7",
       "http": "github:jspm/nodelibs-http@1.7.1",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "socket.io-adapter": "npm:socket.io-adapter@0.4.0",
-      "socket.io-client": "npm:socket.io-client@1.4.4",
+      "socket.io-client": "npm:socket.io-client@1.4.5",
       "socket.io-parser": "npm:socket.io-parser@2.2.6",
       "url": "github:jspm/nodelibs-url@0.1.0"
-    },
-    "npm:socketio@1.0.0": {
-      "express": "npm:express@4.13.4",
-      "http": "github:jspm/nodelibs-http@1.7.1",
-      "socket.io": "npm:socket.io@1.4.4"
     },
     "npm:statuses@1.2.1": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
