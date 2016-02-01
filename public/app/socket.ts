@@ -10,7 +10,6 @@ export class WebSocket {
         this.socket.on('connect', () => {
             let sessionId = this.socket.io.engine.id;
             console.log("WebSocket connected with session id", sessionId);
-            this.socket.emit('new_user', { id: sessionId });
         });
     }
 }

@@ -11,6 +11,12 @@ var app = express();
 var http = require('http').createServer(app);
 var io = require('socket.io').listen(http);
 
+var participants = [];
+var spinning = null;
+var firing = null;
+var nameCounter = 1;
+var self = this;
+
 app.set('port', process.env.PORT || 3000);
 
 app.use(logger('dev'));
@@ -22,39 +28,48 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
-if ('development' == app.get('env')) {
+if ('development' == app.get('env') || 'local' == app.get('env')) {
     app.use(errorHandler({
         dumpExceptions: true,
         showStack: true
     }));
 }
-var participants = [];
-var spinning = null;
-var firing = null;
-var nameCounter = 1;
-var self = this;
-cylon.robot({
-    connections: {
-        edison: {
-            adaptor: 'intel-iot'
-        },
-        // edison: { adaptor: "loopback" }
-    },
 
-    devices: {
-        spinPin: {
-            driver: 'direct-pin',
-            pin: 4
-        },
-        firePin: {
-            driver: 'direct-pin',
-            pin: 8
-        }
-        // spinPin: { driver: 'ping', connection: 'edison' },
-        // firePin: { driver: 'ping', connection: 'edison' }
-    },
+function connections(robot) {
+    if ('local' == app.get('env')) {
+        return {
+            edison: {adaptor: "loopback"}
+        };
+    } else {
+        return {
+            edison: {adaptor: 'intel-iot'}
+        };
+    }
+}
+
+function devices(robot) {
+    if ('local' == app.get('env')) {
+        return {
+            spinPin: {driver: 'ping', connection: 'edison'},
+            firePin: {driver: 'ping', connection: 'edison'}
+        };
+    } else {
+        return {
+            spinPin: {driver: 'direct-pin', pin: 4},
+            firePin: {driver: 'direct-pin', pin: 8}
+        };
+    }
+}
+
+cylon.robot({
+    connections: connections(),
+    devices: devices(),
 
     work: function(my) {
+        if ('local' == app.get('env')) {
+            my.spinPin.digitalWrite = function() {};
+            my.firePin.digitalWrite = function() {};
+        }
         my.spinPin.digitalWrite(0);
         my.firePin.digitalWrite(0);
 
@@ -68,11 +83,13 @@ cylon.robot({
             };
             participants.push(participant);
 
-            io.sockets.emit("new_connection", {
+            io.emit("new_connection", {
                 participant: participant,
                 sender: "system",
                 created_at: new Date().toISOString(),
-                participants: participants
+                participants: participants,
+                spinning: self.spinning,
+                firing: self.firing
             });
 
             socket.on("name_change", function(data) {
@@ -93,7 +110,7 @@ cylon.robot({
                 });
                 self.spinning = socket.id;
                 spin(true, my);
-                io.sockets.emit("spun_up", p);
+                io.emit("spun_up", p);
             });
 
             socket.on("spin_down", function() {
@@ -104,7 +121,7 @@ cylon.robot({
                 });
                 spin(false, my);
                 self.spinning = null;
-                io.sockets.emit("spun_down", p);
+                io.emit("spun_down", p);
             });
 
             socket.on("fire_on", function() {
@@ -115,7 +132,7 @@ cylon.robot({
                 });
                 fire(true, my);
                 self.firing = socket.id;
-                io.sockets.emit("fired_on", p);
+                io.emit("fired_on", p);
             });
 
             socket.on("fire_off", function() {
@@ -126,7 +143,7 @@ cylon.robot({
                 });
                 fire(false, my);
                 self.firing = null;
-                io.sockets.emit("fired_off", p);
+                io.emit("fired_off", p);
             });
 
             socket.on("disconnect", function() {
@@ -143,7 +160,7 @@ cylon.robot({
                     self.spinning = null;
                     spin(false, my);
                 }
-                
+
                 participants = _.without(participants, participant);
                 io.sockets.emit("user_disconnected", {
                     participant: participant,

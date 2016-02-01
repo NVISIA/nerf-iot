@@ -18,9 +18,14 @@ npm install
 jspm install
 ```
 
-Run the server.
+Run the server from an Edison:
 ```
 node index.js
+```
+
+Run the server outside an Edison (uses a mock Edison connection):
+```
+NODE_ENV=local node index.js
 ```
 
 ## Integration Test

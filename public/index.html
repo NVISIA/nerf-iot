@@ -1,22 +1,37 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <title>Nerf Rhino Fire Internet of Things App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css" />
 
-<head>
-    <title>Angular 2 QuickStart</title>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/justindujardin/ng2-material/410d0dc/dist/ng2-material.css" />
-    <link rel="stylesheet" href="https://cdn.rawgit.com/justindujardin/ng2-material/410d0dc/dist/font.css" />
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="lib/system.js"></script>
-    <script src="config.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.16/system-polyfills.js"></script>
+        <script src="https://code.angularjs.org/tools/system.js"></script>
+        <script src="https://code.angularjs.org/tools/typescript.js"></script>
+        <script src="https://code.angularjs.org/2.0.0-beta.2/angular2-polyfills.js"></script>
+        <script src="https://code.angularjs.org/2.0.0-beta.2/Rx.js"></script>
+        <script src="https://code.angularjs.org/2.0.0-beta.2/angular2.dev.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
 
-    <script>
-        System.import('app/boot')
-            .then(null, console.error.bind(console));
-    </script>
-
-</head>
-
-<body>
-    <my-app>Loading...</my-app>
-</body>
-
+        <script>
+            System.config({
+                transpiler: 'typescript',
+                typescriptOptions: {
+                    emitDecoratorMetadata: true
+                },
+                packages: {
+                    'app': {
+                        defaultExtension: 'ts'
+                    }
+                }
+            });
+            System.import('app/main')
+                .then(null, console.error.bind(console));
+        </script>
+    </head>
+    <body>
+        <nerf-app>Loading...</nerf-app>
+    </body>
 </html>

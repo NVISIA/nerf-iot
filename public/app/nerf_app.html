@@ -1,0 +1,32 @@
+<div [(hidden)]="!name">{{name}}</div>
+<br/>
+<br/>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-md-12 col-xs-12">
+            <button type="button" class="btn btn-danger btn-circle btn-xxl" (touchstart)="fire(true)" (touchend)="fire(false)" [disabled]="!motor"></button>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-md-2 col-xs-offset-2 col-md-offset-5">
+            <div class="panel panel-default">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        Motor
+                        <div class="material-switch pull-right">
+                            <input id="someSwitchOptionDanger" type="checkbox" [(ngModel)]="motor" (change)="spin()"/>
+                            <label for="someSwitchOptionDanger" class="label-danger"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
