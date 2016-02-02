@@ -94,71 +94,43 @@ cylon.robot({
 
             socket.on("name_change", function(data) {
                 console.log("ON name_change", data);
-
-                var p = _.find(participants, {
-                    id: socket.id
-                });
-                p.name = data.name;
-                io.emit("name_changed", p);
+                var participant = findParticipant(socket.id);
+                participant.name = data.name;
+                io.emit("name_changed", participant);
             });
 
             socket.on("spin_up", function() {
                 console.log("ON spin_up", socket.id);
-
-                var p = _.find(participants, {
-                    id: socket.id
-                });
-                self.spinning = socket.id;
-                spin(true, my);
-                io.emit("spun_up", p);
+                spin(true, my, socket);
             });
 
             socket.on("spin_down", function() {
                 console.log("ON spin_down", socket.id);
-
-                var p = _.find(participants, {
-                    id: socket.id
-                });
-                spin(false, my);
-                self.spinning = null;
-                io.emit("spun_down", p);
+                if (self.firing) {
+                    fire(false, my, socket);
+                }
+                spin(false, my, socket);
             });
 
             socket.on("fire_on", function() {
                 console.log("ON fire_on", socket.id);
-
-                var p = _.find(participants, {
-                    id: socket.id
-                });
-                fire(true, my);
-                self.firing = socket.id;
-                io.emit("fired_on", p);
+                fire(true, my, socket);
             });
 
             socket.on("fire_off", function() {
                 console.log("ON fire_off", socket.id);
-
-                var p = _.find(participants, {
-                    id: socket.id
-                });
-                fire(false, my);
-                self.firing = null;
-                io.emit("fired_off", p);
+                fire(false, my, socket);
             });
 
             socket.on("disconnect", function() {
                 console.log("ON disconnect", socket.id);
 
-                var participant = _.find(participants, {
-                    id: socket.id
-                });
+                var participant = findParticipant(socket.id);
                 if (self.firing == socket.id) {
-                    self.firing = null;
-                    fire(false, my);
+                    fire(false, my, socket);
                 }
                 if (self.spinning == socket.id) {
-                    self.spinning = null;
-                    spin(false, my);
+                    spin(false, my, socket);
                 }
 
                 participants = _.without(participants, participant);
@@ -166,7 +138,9 @@ cylon.robot({
                     participant: participant,
                     sender: "system",
                     created_at: new Date().toISOString(),
-                    participants: participants
+                    participants: participants,
+                    spinning: self.spinning,
+                    firing: self.firing
                 });
                 socket.disconnect(true);
             });
@@ -175,24 +149,40 @@ cylon.robot({
     }
 }).start();
 
-function spin(state, board) {
+function spin(state, board, socket) {
+    var participant = findParticipant(socket.id);
     if (state) {
         console.log("Nerf gun spinning up");
         board.spinPin.digitalWrite(1);
+        self.spinning = socket.id;
+        io.emit("spun_up", participant);
     } else {
         console.log("Nerf gun spinning down");
         board.spinPin.digitalWrite(0);
+        self.spinning = null;
+        io.emit("spun_down", participant);
     }
 }
 
-function fire(state, board) {
+function fire(state, board, socket) {
+    var participant = findParticipant(socket.id);
     if (state) {
         console.log("Nerf gun firing");
         board.firePin.digitalWrite(1);
+        self.firing = socket.id;
+        io.emit("fired_on", participant);
     } else {
         console.log("Nerf gun ceasing fire");
         board.firePin.digitalWrite(0);
+        self.firing = null;
+        io.emit("fired_off", participant);
     }
+}
+
+function findParticipant(id) {
+    return _.find(participants, {
+        id: id
+    });
 }
 
 http.listen(app.get('port'), function() {

@@ -1,6 +1,5 @@
 body{margin:40px;}
 
-
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -80,4 +79,16 @@ button:focus {outline:0 !important;}
 .material-switch > input[type="checkbox"]:checked + label::after {
     background: inherit;
     left: 20px;
+}
+
+.console {
+    height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.console > pre {
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 10px;
 }

@@ -26,11 +26,9 @@
         "rewriteTsconfig": true
     },
     "files": [
-        "public/app/app.component.ts",
-        "public/app/boot.ts",
-        "public/app/pressed.ts",
+        "public/app/main.ts",
+        "public/app/nerf_app.ts",
         "public/app/socket.io-client.d.ts",
         "public/app/socket.ts",
-        "public/app/utils.ts"
     ]
 }
